@@ -31,13 +31,13 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URI);
 
-    await buildAdminJS(app);
+    // await buildAdminJS(app);
 
     app.listen({ port: PORT, host: "0.0.0.0" }, (err, addr) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(`Admin Server started on http://localhost:${PORT}/admin`);
+        // console.log(`Admin Server started on http://localhost:${PORT}/admin`);
         console.log(`Server started on http://localhost:${PORT}`);
       }
     });
