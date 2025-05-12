@@ -8,7 +8,7 @@ import { categoriesData, productData } from "./seedData.js";
 
 async function seedDatabase() {
     try {
-        await mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DBNAME}`);
+        await mongoose.connect(`${process.env.MONGODB_URI}`);
         
         await Category.deleteMany({});
         await Product.deleteMany({});

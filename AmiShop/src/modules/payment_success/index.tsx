@@ -12,12 +12,11 @@ const PaymentSuccess = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       goBack();
-      navigate('Account', {
-        isRefresh: true,
-      });
-    }, 4000);
+      navigate('Account', { isRefresh: true });
+    }, 3000);
     return () => clearTimeout(timeoutId);
   }, []);
+
 
   return (
     <View style={styles.container}>
@@ -35,13 +34,9 @@ const PaymentSuccess = () => {
         ORDER PLACED - ₹{orderDetails?.price}
       </Text>
       <View style={styles.deliveryContainer}>
-        <Text style={styles.deliveryText}>
-          Delivering to home
-        </Text>
+        <Text style={styles.deliveryText}>Delivering to home</Text>
       </View>
-      <Text style={{textAlign: 'center'}}>
-        {orderDetails?.address}
-      </Text>
+      <Text style={{textAlign: 'center'}}>{orderDetails?.address}</Text>
     </View>
   );
 };
