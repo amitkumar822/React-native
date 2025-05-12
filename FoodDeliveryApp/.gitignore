@@ -22,6 +22,10 @@ DerivedData
 *.xcuserstate
 **/.xcode.env.local
 
+
+# local assets not upload
+/src/assets/
+
 # Android/IntelliJ
 #
 build/
