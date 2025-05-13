@@ -1,21 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import '@unistyles/unistyles'
+import Navigation from '@navigation/Navigation'
 
-function App(): React.JSX.Element {
+const App = () => {
   return (
-    <View>
-      <Text style={styles.text}>
-        Hello Amit
-      </Text>
-    </View>
-  );
+    <>
+    <Navigation />
+    </>
+  )
 }
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 25,
-    paddingTop: "50%",
-  }
-})
-
-export default App;
+export default App
