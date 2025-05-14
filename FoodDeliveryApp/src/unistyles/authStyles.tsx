@@ -84,7 +84,7 @@ export const loginStyles = createStyleSheet(({ colors, device, border }) => ({
     },
     footer: {
         position: "absolute",
-        bottom: 42,
+        bottom: 48,
         alignSelf: 'center',
         width: '100%',
         justifyContent: 'center',
