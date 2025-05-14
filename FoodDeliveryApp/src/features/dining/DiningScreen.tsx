@@ -1,4 +1,4 @@
-import {View, Image} from 'react-native';
+import {View, Image, Text} from 'react-native';
 import React from 'react';
 import {useStyles} from 'react-native-unistyles';
 import {emptyStyles} from '@unistyles/emptyStyles';
