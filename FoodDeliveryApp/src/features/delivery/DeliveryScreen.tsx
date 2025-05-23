@@ -47,7 +47,7 @@ const DeliveryScreen: FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{height: Platform.OS === 'android' ? insets.top : 0}} />
+      {/* <View style={{height: Platform.OS === 'android' ? insets.top : 0}} /> */}
 
       <Animated.View style={moveUpStyle}>
         <Animated.View style={moveUpStyleNoExtrapolate}>

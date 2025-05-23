@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import React, {FC} from 'react';
 import Icon from '@components/global/Icon';
 import {RFValue} from 'react-native-responsive-fontsize';

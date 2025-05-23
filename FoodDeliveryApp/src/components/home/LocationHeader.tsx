@@ -33,7 +33,7 @@ const LocationHeader: FC = () => {
   return (
     <Animated.View style={opacityFadingStyles}>
         <SafeAreaView />
-      {/* <View style={{height: Platform.OS === 'android' ? insets.top : 0}} /> */}
+      <View style={{height: Platform.OS === 'android' ? insets.top : 0}} />
       <View style={styles.flexRowBetween}>
         <View style={styles.flexRowGap}>
           <Icon
