@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity, Image, Alert} from 'react-native';
 import React, {FC} from 'react';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -14,11 +14,10 @@ import {
   LiveTabIcon,
   ReorderTabIcon,
 } from './TabIcon';
+import { useAppSelector } from '@states/reduxHook';
 
-
-const CustomTabBar: FC<BottomTabBarProps> = (props) => {
-  // const isVegMode = useAppSelector(state => state.user.isVegMode);
-  const isVegMode = true;
+const CustomTabBar: FC<BottomTabBarProps> = props => {
+  const isVegMode = useAppSelector(state => state.user.isVegMode);
 
   const {scrollY} = useSharedState();
 
@@ -104,14 +103,30 @@ const CustomTabBar: FC<BottomTabBarProps> = (props) => {
       </View>
 
       <Animated.View
-      style={[
-        styles.slidingIndicator,
-        indicatorStyle,
-        {
-          backgroundColor: isLiveTabFocused ? '#fff' : isVegMode ? Colors.active : Colors.primary
-        }
-      ]}
+        style={[
+          styles.slidingIndicator,
+          indicatorStyle,
+          {
+            backgroundColor: isLiveTabFocused
+              ? '#fff'
+              : isVegMode
+              ? Colors.active
+              : Colors.primary,
+          },
+        ]}
       />
+
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={styles.groceryLogoContainer}
+        onPress={() => {
+          Alert.alert('Please shared this app!');
+        }}>
+        <Image
+          source={require('@assets/icons/grocery.png')}
+          style={styles.groceryLogo}
+        />
+      </TouchableOpacity>
     </Animated.View>
   );
 };

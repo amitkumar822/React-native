@@ -1,12 +1,69 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text, StatusBar, Platform, Animated} from 'react-native';
+import React, {FC} from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useStyles} from 'react-native-unistyles';
+import {homeStyles} from '@unistyles/homeStyles';
+import {useSharedState} from '@features/tabs/SharedContext';
+import {
+  Extrapolate,
+  interpolate,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+import Graphics from '@components/home/Graphics';
+import HeaderSection from '@components/home/HeaderSection';
+import MainList from '@components/list/MainList';
 
-const DeliveryScreen = () => {
+const DeliveryScreen: FC = () => {
+  const insets = useSafeAreaInsets();
+  const {styles} = useStyles(homeStyles);
+  const {scrollYGlobal} = useSharedState();
+
+  const backgroundColorChanges = useAnimatedStyle(() => {
+    const opacity = interpolate(scrollYGlobal.value, [1, 50], [0, 1]);
+    return {
+      backgroundColor: `rgba(255,255,255, ${opacity})`,
+    };
+  });
+
+  const moveUpStyle = useAnimatedStyle(() => {
+    const translateY = interpolate(
+      scrollYGlobal.value,
+      [0, 50],
+      [0, -50],
+      Extrapolate.CLAMP,
+    );
+    return {
+      transform: [{translateY: translateY}],
+    };
+  });
+
+  const moveUpStyleNoExtrapolate = useAnimatedStyle(() => {
+    const translateY = interpolate(scrollYGlobal.value, [0, 50], [0, -50]);
+
+    return {
+      transform: [{translateY: translateY}],
+    };
+  });
+
   return (
-    <View>
-      <Text>DeliveryScreen</Text>
-    </View>
-  )
-}
+    <View style={styles.container}>
+      <View style={{height: Platform.OS === 'android' ? insets.top : 0}} />
 
-export default DeliveryScreen
+      <Animated.View style={moveUpStyle}>
+        <Animated.View style={moveUpStyleNoExtrapolate}>
+          <Graphics />
+        </Animated.View>
+
+        <Animated.View style={[backgroundColorChanges, styles.topHeader]}>
+          <HeaderSection />
+        </Animated.View>
+      </Animated.View>
+
+      <Animated.View style={moveUpStyle}>
+        <MainList />
+      </Animated.View>
+    </View>
+  );
+};
+
+export default DeliveryScreen;
