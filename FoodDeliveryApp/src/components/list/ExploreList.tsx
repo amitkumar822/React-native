@@ -1,123 +1,50 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Pressable } from 'react-native'
+import React, { useState } from 'react'
+import { useStyles } from 'react-native-unistyles';
+import { homeStyles } from '@unistyles/homeStyles';
+import CustomText from '@components/global/CustomText';
+import { Colors } from '@unistyles/Constants';
+import Icon from '@components/global/Icon';
+import RecommendedList from './RecommendedList';
+import BreakerText from '@components/ui/BreakerText';
+import RegularFoodList from './RegularFoodList';
 
 const ExploreList = () => {
+  const [tabSelected, setTabSelected] = useState<number>(1)
+  const { styles } = useStyles(homeStyles);
+
   return (
-    <View>
-      <Text>Safe Area2222</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
-      <Text>ExploreList</Text>
+    <View style={styles.topHidingContainer}>
+      <View style={styles.flexRowCenter}>
+        <Pressable
+          style={styles.leftTab(tabSelected === 1)}
+          onPress={() => setTabSelected(1)}
+        >
+          <CustomText
+            color={tabSelected == 1 ? Colors.text : Colors.lightText}
+            fontFamily='Okra-Medium'>Recommended</CustomText>
+        </Pressable>
+
+        <Pressable
+          style={styles.leftTab(tabSelected === 2)}
+          onPress={() => setTabSelected(2)}
+        >
+          <Icon
+            name='bookmark-outline'
+            iconFamily='Ionicons'
+            size={14}
+            color={tabSelected == 2 ? Colors.text : Colors.lightText}
+          />
+          <CustomText
+            color={tabSelected == 2 ? Colors.text : Colors.lightText}
+            fontFamily='Okra-Medium'>Collection</CustomText>
+        </Pressable>
+      </View>
+
+      <RecommendedList />
+      <BreakerText text="WHAT'S ON YOUR MIND" />
+      <RegularFoodList />
+      <BreakerText text="ALL RESTAURANTS" />
     </View>
   )
 }
