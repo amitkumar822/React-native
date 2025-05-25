@@ -142,7 +142,8 @@ export const homeStyles = createStyleSheet(({ colors, device, border }) => ({
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingTop: 5
     },
     leftTab: (isActive: boolean) => ({
         justifyContent: 'center',

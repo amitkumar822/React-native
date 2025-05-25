@@ -105,9 +105,9 @@ const MainList: FC = () => {
 
   return (
     <>
-      {/* <Animated.View style={[styles.backToTopButton, backToTopStyle]}>
+      <Animated.View style={[styles.backToTopButton, backToTopStyle]}>
         <BackToTopButton onPress={handleScrollToTop} />
-      </Animated.View> */}
+      </Animated.View>
       <SectionList
         overScrollMode='always'
         onScroll={handleScroll}
