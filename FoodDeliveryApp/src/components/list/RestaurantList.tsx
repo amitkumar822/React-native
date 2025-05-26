@@ -28,19 +28,35 @@ const RestaurantList = () => {
         style={styles.centerText}
         fontSize={12}
         fontFamily='Okra-Medium'>
-          FEATURED
+        FEATURED
       </CustomText>
 
-       <FlatList
-              data={recommendedListData}
-              scrollEventThrottle={16}
-              bounces={false}
-              showsHorizontalScrollIndicator={false}
-              renderItem={renderItem}
-              keyExtractor={item => item?.id?.toString()}
-              scrollEnabled={false}
-              contentContainerStyle={styles.listContainer}
-            />
+      <FlatList
+        data={recommendedListData}
+        scrollEventThrottle={16}
+        bounces={false}
+        showsHorizontalScrollIndicator={false}
+        renderItem={renderItem}
+        keyExtractor={item => item?.id?.toString()}
+        scrollEnabled={false}
+        contentContainerStyle={styles.listContainer}
+        ListFooterComponent={() => {
+          return (
+            <View style={{ justifyContent: 'center', alignItems: 'center', opacity: 0.6 }}>
+              <CustomText style={styles.centerText} fontSize={12} fontFamily='Okra-Medium'>
+                You’ve reached the end of the journey
+              </CustomText>
+              <CustomText fontFamily='Okra-Medium' variant='h1'>
+                Crafted with ❣️
+              </CustomText>
+              <CustomText fontFamily='Okra-Medium' variant='h5'>
+                — Amit Kumar Singh
+              </CustomText>
+            </View>
+
+          )
+        }}
+      />
     </View>
   )
 }

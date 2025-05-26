@@ -75,6 +75,7 @@ export const recommendedListData = [
         "discount": "10% OFF",
         "discountAmount": "up to ₹30",
         "time": "18 mins",
+        "rating": 4.5,
         "distance": "4.2 km",
         "imageUrl": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/4/1/e6705d31-3941-4fb8-a198-fc6e24cdcc36_861682.JPG"
     },
