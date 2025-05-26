@@ -8,10 +8,10 @@ import DiningFocused from '@assets/tabicons/dining_focused.png';
 import Dining from '@assets/tabicons/dining.png';
 
 import CustomText from '@components/global/CustomText';
-import {Colors} from '@unistyles/Constants';
-import {FC, memo} from 'react';
-import {Image, TextStyle, View, ViewStyle} from 'react-native';
-import {RFValue} from 'react-native-responsive-fontsize';
+import { Colors } from '@unistyles/Constants';
+import { FC, memo } from 'react';
+import { Image, TextStyle, View, ViewStyle } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { useAppSelector } from '@states/reduxHook';
 
 interface TabProps {
@@ -46,7 +46,7 @@ const textStyleActive: TextStyle = {
   fontSize: RFValue(9.5),
 };
 
-const TabIcon: FC<TabProps> = memo(({name}) => {
+const TabIcon: FC<TabProps> = memo(({ name }) => {
   return (
     <View style={tabStyles}>
       <Image
@@ -54,10 +54,10 @@ const TabIcon: FC<TabProps> = memo(({name}) => {
           name === 'Delivery'
             ? Delivery
             : name === 'Dining'
-            ? Dining
-            : name === 'Reorder'
-            ? Reorder
-            : Live
+              ? Dining
+              : name === 'Reorder'
+                ? Reorder
+                : Live
         }
         style={styles}
       />
@@ -66,43 +66,43 @@ const TabIcon: FC<TabProps> = memo(({name}) => {
   );
 });
 
-const TabIconFocused: FC<TabProps> = memo(({name}) => {
+const TabIconFocused: FC<TabProps> = memo(({ name }) => {
   const isVegMode = useAppSelector(state => state?.user?.isVegMode)
-  
-    return (
+
+  return (
     <View style={tabStyles}>
       <Image
         source={
           name === 'Delivery'
             ? DeliveryFocused
             : name === 'Dining'
-            ? DiningFocused
-            : name === 'Reorder'
-            ? ReorderFocused
-            : LiveFocused
+              ? DiningFocused
+              : name === 'Reorder'
+                ? ReorderFocused
+                : LiveFocused
         }
-        style={[styles,{
-            tintColor: name === 'Live' ? undefined: isVegMode ? Colors.active : Colors.primary
+        style={[styles, {
+          tintColor: name === 'Live' ? undefined : isVegMode ? Colors.active : Colors.primary
         }]}
       />
-      <CustomText style={textStyleActive}>{name}</CustomText>
+      <CustomText style={[textStyleActive, { color: isVegMode ? Colors.active : Colors.primary }]}>{name}</CustomText>
     </View>
   );
 });
 
-export const DeliveryTabIcon: FC<IconProp> = ({focused}) => {
-    return focused ? <TabIconFocused name='Delivery' /> : <TabIcon name='Delivery' />
+export const DeliveryTabIcon: FC<IconProp> = ({ focused }) => {
+  return focused ? <TabIconFocused name='Delivery' /> : <TabIcon name='Delivery' />
 }
 
-export const ReorderTabIcon: FC<IconProp> = ({focused}) => {
-    return focused ? <TabIconFocused name='Reorder' /> : <TabIcon name='Reorder' />
+export const ReorderTabIcon: FC<IconProp> = ({ focused }) => {
+  return focused ? <TabIconFocused name='Reorder' /> : <TabIcon name='Reorder' />
 }
 
-export const DiningTabIcon: FC<IconProp> = ({focused}) => {
-    return focused ? <TabIconFocused name='Dining' /> : <TabIcon name='Dining' />
+export const DiningTabIcon: FC<IconProp> = ({ focused }) => {
+  return focused ? <TabIconFocused name='Dining' /> : <TabIcon name='Dining' />
 }
 
-export const LiveTabIcon: FC<IconProp> = ({focused}) => {
-    return focused ? <TabIconFocused name='Live' /> : <TabIcon name='Live' />
+export const LiveTabIcon: FC<IconProp> = ({ focused }) => {
+  return focused ? <TabIconFocused name='Live' /> : <TabIcon name='Live' />
 }
 

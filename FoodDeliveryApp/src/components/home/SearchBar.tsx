@@ -5,7 +5,7 @@ import {
   Pressable,
   Image,
 } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import {useStyles} from 'react-native-unistyles';
 import {homeStyles} from '@unistyles/homeStyles';
 import {useSharedState} from '@features/tabs/SharedContext';

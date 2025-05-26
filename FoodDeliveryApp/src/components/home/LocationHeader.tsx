@@ -1,8 +1,5 @@
 import {
   View,
-  Text,
-  Animated,
-  SafeAreaView,
   TouchableOpacity,
   Image,
   Platform,
@@ -11,7 +8,7 @@ import React, {FC} from 'react';
 import {useSharedState} from '@features/tabs/SharedContext';
 import {useStyles} from 'react-native-unistyles';
 import {homeStyles} from '@unistyles/homeStyles';
-import {interpolate, useAnimatedStyle} from 'react-native-reanimated';
+import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 import Icon from '@components/global/Icon';
 import CustomText from '@components/global/CustomText';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';

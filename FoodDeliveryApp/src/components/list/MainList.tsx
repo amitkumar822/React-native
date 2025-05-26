@@ -3,7 +3,6 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   ViewToken,
-  Animated,
 } from 'react-native';
 import React, { FC, useRef, useState } from 'react';
 import ExploreList from './ExploreList';
@@ -11,7 +10,7 @@ import RestaurantList from './RestaurantList';
 import { useStyles } from 'react-native-unistyles';
 import { restaurantStyles } from '@unistyles/restuarantStyles';
 import { useSharedState } from '@features/tabs/SharedContext';
-import { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import BackToTopButton from './BackToTopButton';
 import { filtersOption } from '@utils/dummyData';
 import SortingAndFilters from '@components/home/SortingAndFilters';
@@ -75,11 +74,6 @@ const MainList: FC = () => {
       { duration: 300 },
     );
 
-    console.log('====================================');
-    console.log('UP: ', opacity);
-    console.log('UP: ', translateY);
-    console.log('====================================');
-
     previousScrollYTopButton.current = scrollYGlobal.value;
 
     return {
@@ -122,13 +116,13 @@ const MainList: FC = () => {
         stickySectionHeadersEnabled={true}
         viewabilityConfig={viewabilityConfig}
         onViewableItemsChanged={onViewableItemsChanged}
-        renderSectionHeader={({section}) => {
-          if(section.title !== 'Restaurants') {
+        renderSectionHeader={({ section }) => {
+          if (section.title !== 'Restaurants') {
             return null;
           }
           return (
             <Animated.View style={[
-              isRestaurantVisible || isNearEnd ? styles.shadowBottom: null
+              isRestaurantVisible || isNearEnd ? styles.shadowBottom : null
             ]}>
               <SortingAndFilters menuTitle='Sort' options={filtersOption} />
             </Animated.View>
