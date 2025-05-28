@@ -11,7 +11,7 @@ const DottedLine = () => {
           y1="0"
           x2="100%"
           y2="0"
-          stroke="#ccc" // eee
+          stroke="#eee"
           strokeWidth="2"
           strokeDasharray="3,3"
         />

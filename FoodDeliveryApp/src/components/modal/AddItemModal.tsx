@@ -1,5 +1,12 @@
-import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native'
-import React, { FC, useEffect, useState } from 'react'
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
+import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '@states/reduxHook';
 import { useStyles } from 'react-native-unistyles';
 import { modelStyles } from '@unistyles/modelStyles';
@@ -17,31 +24,31 @@ const transformSelectedOptions = (
   customizationOptions: any,
 ) => {
   return Object.entries(selectedOption).map(([type, index]) => {
-    const customization = customizationOptions?.find((option: any) => option.type === type);
+    const customization = customizationOptions?.find(
+      (option: any) => option.type === type,
+    );
     if (!customization || !customization?.options[index as number]) {
-      throw new Error(`Invalid customization type or index of ${type}`)
+      throw new Error(`Invalid customization type or index of ${type}`);
     }
 
     return {
       type,
-      selectedOption: customization?.options[index as number]
-    }
-  })
-}
-
-
+      selectedOption: customization?.options[index as number],
+    };
+  });
+};
 
 const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
   item,
   restaurant,
-  onClose
+  onClose,
 }) => {
   const { styles } = useStyles(modelStyles);
   const dispatch = useAppDispatch();
   const [data, setData] = useState({
     quantity: 1,
     price: item?.price,
-    selectedOption: {} as Record<string, number>
+    selectedOption: {} as Record<string, number>,
   });
 
   useEffect(() => {
@@ -57,7 +64,8 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
 
         if (defaultOptionIndex !== -1) {
           defaultSelectedOption[customization.type] = defaultOptionIndex;
-          initialPrice += customization?.options[defaultOptionIndex]?.price || 0;
+          initialPrice +=
+            customization?.options[defaultOptionIndex]?.price || 0;
         }
       }
     });
@@ -65,11 +73,9 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
     setData(prevData => ({
       ...prevData,
       selectedOption: defaultSelectedOption,
-      price: initialPrice
-    }))
-
+      price: initialPrice,
+    }));
   }, [item]);
-
 
   const calculatePrice = (
     quantity: number,
@@ -80,13 +86,15 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
 
     Object.keys(selectedOption).forEach(type => {
       const optionIndex = selectedOption[type];
-      const optionPrice = item?.customizationOptions?.find((c: any) => c.type === type)?.options?.[optionIndex]?.price || 0;
+      const optionPrice =
+        item?.customizationOptions?.find((c: any) => c.type === type)
+          ?.options?.[optionIndex]?.price || 0;
 
       customizationPrice += optionPrice;
     });
 
     return (basePrice + customizationPrice) * quantity;
-  }
+  };
 
   const selectOptionHandler = (type: string, index: number) => {
     setData(prevData => {
@@ -99,18 +107,18 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
       return {
         ...prevData,
         selectedOption: updatedSelectedOption,
-        price: updatedPrice
-      }
-    })
-  }
+        price: updatedPrice,
+      };
+    });
+  };
 
   const addCartHandler = () => {
     setData(prevData => ({
       ...prevData,
       quantity: prevData?.quantity + 1,
       price: calculatePrice(prevData?.quantity + 1, prevData?.selectedOption),
-    }))
-  }
+    }));
+  };
 
   const removeCartHandler = () => {
     if (data?.quantity > 1) {
@@ -118,7 +126,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
         ...prevData,
         quantity: prevData?.quantity - 1,
         price: calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
-      }))
+      }));
     } else {
       onClose();
     }
@@ -136,95 +144,105 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
       customization: {
         quantity: data?.quantity,
         price: data?.price,
-        customizationOptions: customizationOption
-      }
+        customizationOptions: customizationOption,
+      },
     };
     dispatch(addCustomizableItem(customizedData));
     onClose();
-  }
+  };
 
   return (
     <View>
       <View style={styles.headerContainer}>
         <View style={styles.flexRowGap}>
           <Image source={{ uri: item?.image }} style={styles.headerImage} />
-          <CustomText fontFamily='Okra-Medium' fontSize={12}>{item?.name}</CustomText>
+          <CustomText fontFamily="Okra-Medium" fontSize={12}>
+            {item?.name}
+          </CustomText>
         </View>
 
         <View style={styles.flexRowGap}>
           <TouchableOpacity style={styles.icon}>
             <Icon
-              name='bookmark-outline'
-              iconFamily='Ionicons'
+              name="bookmark-outline"
+              iconFamily="Ionicons"
               color={Colors.primary}
               size={16}
             />
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
             <Icon
-              name='share-outline'
-              iconFamily='Ionicons'
+              name="share-outline"
+              iconFamily="Ionicons"
               color={Colors.primary}
               size={16}
             />
           </TouchableOpacity>
         </View>
-
-
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {item?.customizationOptions?.map((customization: any, index: number) => {
-          return (
-            <View style={styles.subContainer} key={index}>
-              <CustomText fontFamily='Okra-Medium'>{customization?.type}</CustomText>
-              <CustomText fontFamily='Okra-Medium' variant='h7' color='#888'>
-                {customization?.required ? 'Required . Select any 1 option' : `Add on your ${customization?.type}`}
-              </CustomText>
+        {item?.customizationOptions?.map(
+          (customization: any, index: number) => {
+            return (
+              <View style={styles.subContainer} key={index}>
+                <CustomText fontFamily="Okra-Medium">
+                  {customization?.type}
+                </CustomText>
+                <CustomText fontFamily="Okra-Medium" variant="h7" color="#888">
+                  {customization?.required
+                    ? 'Required . Select any 1 option'
+                    : `Add on your ${customization?.type}`}
+                </CustomText>
 
-              <DottedLine />
+                <DottedLine />
 
-              {
-                customization?.options?.map((option: any, index: number) => {
+                {customization?.options?.map((option: any, index: number) => {
                   return (
-                    <TouchableOpacity key={index}
+                    <TouchableOpacity
+                      key={index}
                       style={styles.optionContainer}
                       onPress={() =>
                         selectOptionHandler(customization?.type, index)
-                      }
-                    >
-                      <CustomText fontFamily='Okra-Medium' fontSize={11}>{option?.name}</CustomText>
+                      }>
+                      <CustomText fontFamily="Okra-Medium" fontSize={11}>
+                        {option?.name}
+                      </CustomText>
                       <View style={styles.flexRowGap}>
-                        <CustomText fontFamily='Okra-Medium' fontSize={11}>₹{option?.price}</CustomText>
+                        <CustomText fontFamily="Okra-Medium" fontSize={11}>
+                          ₹{option?.price}
+                        </CustomText>
                         <Icon
                           name={
-                            data?.selectedOption[customization.type] === index ? 'radiobox-marked' : 'radiobox-blank'
+                            data?.selectedOption[customization.type] === index
+                              ? 'radiobox-marked'
+                              : 'radiobox-blank'
                           }
-                          iconFamily='MaterialCommunityIcons'
+                          iconFamily="MaterialCommunityIcons"
                           color={
-                            data?.selectedOption[customization.type] === index ? Colors.active : '#888'
-
+                            data?.selectedOption[customization.type] === index
+                              ? Colors.active
+                              : '#888'
                           }
                           size={RFValue(16)}
                         />
                       </View>
                     </TouchableOpacity>
-                  )
-                })
-              }
-            </View>
-          )
-        })}
+                  );
+                })}
+              </View>
+            );
+          },
+        )}
       </ScrollView>
 
       <View style={styles.footerContainer}>
         <View style={styles.selectedContainer}>
           <ScalePress>
             <Icon
-              name='minus-thick'
-              iconFamily='MaterialCommunityIcons'
-              color={Colors.active
-              }
+              name="minus-thick"
+              iconFamily="MaterialCommunityIcons"
+              color={Colors.active}
               size={RFValue(13)}
             />
           </ScalePress>
@@ -236,27 +254,25 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
           />
           <ScalePress>
             <Icon
-              name='plus-thick'
-              iconFamily='MaterialCommunityIcons'
-              color={Colors.active
-              }
+              name="plus-thick"
+              iconFamily="MaterialCommunityIcons"
+              color={Colors.active}
               size={RFValue(13)}
             />
           </ScalePress>
         </View>
 
         <TouchableOpacity
-        style={styles.addButtonContainer}
-        onPress={addItemIntoCart}
-        >
-          <CustomText fontFamily='Okra-Medium' variant='h5' color='#fff'>
+          style={styles.addButtonContainer}
+          onPress={addItemIntoCart}>
+          <CustomText fontFamily="Okra-Medium" variant="h5" color="#fff">
             Add item - ₹{data?.price}
           </CustomText>
         </TouchableOpacity>
         <SafeAreaView />
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default AddItemModal
+export default AddItemModal;
