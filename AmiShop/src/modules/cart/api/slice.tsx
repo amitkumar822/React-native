@@ -1,5 +1,5 @@
-import {createSelector, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from '../../../store/store';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../../store/store';
 
 interface CartItem {
   _id: string;
@@ -53,7 +53,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const {addItem, removeItem, clearCart} = cartSlice.actions;
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const selectCartItems = (state: RootState) => state.cart.items;
 
 export const selectItemCountById = (id: string) =>
@@ -61,7 +61,7 @@ export const selectItemCountById = (id: string) =>
     const item = items.find((item: any) => item?._id === id);
     return item ? item?.quantity : 0;
   });
-  
+
 export const selectTotalItemsInCart = createSelector(selectCartItems, items => {
   return items?.reduce((total, item) => total + item.quantity, 0);
 });
