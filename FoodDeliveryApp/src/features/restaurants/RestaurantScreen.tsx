@@ -12,7 +12,7 @@ import {
 } from '@utils/dummyData';
 import RestaurantHeader from '@components/restaurant/RestaurantHeader';
 import DottedLine from '@components/ui/DottedLine';
-import FoodCard from './FoodCard';
+import FoodCard from '../../components/restaurant/FoodCard';
 
 const RestaurantScreen: FC = () => {
   const route = useRoute() as any;
