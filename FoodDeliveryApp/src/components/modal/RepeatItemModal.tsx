@@ -5,7 +5,6 @@ import { modelStyles } from '@unistyles/modelStyles';
 import { useAppSelector } from '@states/reduxHook';
 import { selectRestaurantCartItem } from '@states/reducers/cartSlice2';
 import CustomText from '@components/global/CustomText';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '@unistyles/Constants';
 import MiniFoodCard from '@components/restaurant/MiniFoodCard';
 
@@ -25,7 +24,7 @@ const RepeatItemModal: FC<{
     if (!cartItem) {
       closeModal();
     }
-  }, []);
+  }, [cartItem]);
 
   return (
     <View>
