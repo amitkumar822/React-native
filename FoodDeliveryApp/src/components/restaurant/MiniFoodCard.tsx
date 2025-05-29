@@ -111,7 +111,6 @@ const MiniFoodCard: FC<{
                     </View>
                 </View>
 
-
                 <View style={styles.cartOperationContainer}>
                     <View style={styles.miniAddButtonContainer}>
                         <TouchableOpacity onPress={() => removeCartHandler(cus)}>

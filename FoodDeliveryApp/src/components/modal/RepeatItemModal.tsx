@@ -1,12 +1,12 @@
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
-import React, {FC, useEffect} from 'react';
-import {useStyles} from 'react-native-unistyles';
-import {modelStyles} from '@unistyles/modelStyles';
-import {useAppSelector} from '@states/reduxHook';
-import {selectRestaurantCartItem} from '@states/reducers/cartSlice2';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React, { FC, useEffect } from 'react';
+import { useStyles } from 'react-native-unistyles';
+import { modelStyles } from '@unistyles/modelStyles';
+import { useAppSelector } from '@states/reduxHook';
+import { selectRestaurantCartItem } from '@states/reducers/cartSlice2';
 import CustomText from '@components/global/CustomText';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {Colors} from '@unistyles/Constants';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { Colors } from '@unistyles/Constants';
 import MiniFoodCard from '@components/restaurant/MiniFoodCard';
 
 const RepeatItemModal: FC<{
@@ -14,8 +14,8 @@ const RepeatItemModal: FC<{
   restaurant: any;
   onOpenAddModal: () => void;
   closeModal: () => void;
-}> = ({item, onOpenAddModal, restaurant, closeModal}) => {
-  const {styles} = useStyles(modelStyles);
+}> = ({ item, onOpenAddModal, restaurant, closeModal }) => {
+  const { styles } = useStyles(modelStyles);
 
   const cartItem = useAppSelector(
     selectRestaurantCartItem(restaurant?.id, item?.id),

@@ -238,7 +238,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
 
       <View style={styles.footerContainer}>
         <View style={styles.selectedContainer}>
-          <ScalePress>
+          <ScalePress onPress={removeCartHandler}>
             <Icon
               name="minus-thick"
               iconFamily="MaterialCommunityIcons"
@@ -252,7 +252,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
             animateToNumber={data?.quantity}
             fontStyle={styles.animatedCount}
           />
-          <ScalePress>
+          <ScalePress onPress={addCartHandler}>
             <Icon
               name="plus-thick"
               iconFamily="MaterialCommunityIcons"
