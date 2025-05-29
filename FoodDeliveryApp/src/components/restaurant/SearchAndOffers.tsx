@@ -5,7 +5,7 @@ import RollingBar from 'react-native-rolling-bar';
 import { useStyles } from 'react-native-unistyles';
 import { searchStyles } from '@unistyles/restuarantStyles';
 import { useAppSelector } from '@states/reduxHook';
-import { selectRestaurantCart } from '@states/reducers/cartSlice2';
+import { selectRestaurantCart } from '@states/reducers/cartSlice';
 import Icon from '@components/global/Icon';
 import { Colors } from '@unistyles/Constants';
 import CustomText from '@components/global/CustomText';

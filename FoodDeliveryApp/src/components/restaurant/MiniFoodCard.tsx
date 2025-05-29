@@ -7,7 +7,7 @@ import {
     addCustomizableItem,
     removeCustomizableItem,
     selectRestaurantCartItem,
-} from '@states/reducers/cartSlice2';
+} from '@states/reducers/cartSlice';
 import EditItemModal from '@components/modal/EditItemModal';
 import CustomModal from '@components/modal/CustomModal';
 import CustomText from '@components/global/CustomText';

@@ -10,7 +10,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '@states/reduxHook';
 import { useStyles } from 'react-native-unistyles';
 import { modelStyles } from '@unistyles/modelStyles';
-import { addCustomizableItem } from '@states/reducers/cartSlice2';
+import { addCustomizableItem } from '@states/reducers/cartSlice';
 import CustomText from '@components/global/CustomText';
 import Icon from '@components/global/Icon';
 import { Colors } from '@unistyles/Constants';

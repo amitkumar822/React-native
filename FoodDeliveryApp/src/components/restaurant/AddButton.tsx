@@ -14,7 +14,7 @@ import {
   removeCustomizableItem,
   removeItemFromCart,
   selectRestaurantCartItem,
-} from '@states/reducers/cartSlice2';
+} from '@states/reducers/cartSlice';
 import CustomModal from '@components/modal/CustomModal';
 import AddItemModal from '@components/modal/AddItemModal';
 import RepeatItemModal from '@components/modal/RepeatItemModal';
