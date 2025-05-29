@@ -40,6 +40,7 @@ const RestaurantScreen: FC = () => {
         </View>
 
 
+
         <FlatList
           data={restaurantItemsData}
           renderItem={renderItem}
@@ -53,7 +54,9 @@ const RestaurantScreen: FC = () => {
           contentContainerStyle={styles.scrollContainer}
         />
 
-        <SearchAndOffers item={restaurant} />
+        <View style={{ position: 'absolute', bottom: 79.6, zIndex: 3, width: '100%' }}>
+          <SearchAndOffers item={restaurant} />
+        </View>
       </CustomSafeAreaView>
     </>
   );
