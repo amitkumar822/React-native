@@ -7,6 +7,8 @@ import {navigationRef} from '@utils/NavigationUtils';
 import UserBottomTab from '@features/tabs/UserBottomTab';
 import AnimatedTabs from '@features/tabs/AnimatedTabs';
 import RestaurantScreen from '@features/restaurants/RestaurantScreen';
+import CheckoutScreen from '@features/checkout/CheckoutScreen';
+import OrderSuccessScreen from '@features/checkout/OrderSuccessScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +36,8 @@ const Navigation: FC = () => {
           name="UserBottomTab"
           component={AnimatedTabs}
         />
+        <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
+        <Stack.Screen name="OrderSuccessScreen" component={OrderSuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
