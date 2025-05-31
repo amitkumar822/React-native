@@ -10,40 +10,42 @@ const CheckoutHeader: FC<{ title: string }> = ({ title }) => {
   return (
     <SafeAreaView>
       <View style={styles.flexRow}>
-        <Pressable onPress={() => goBack()}>
-          <Icon
-            name='chevron-back'
-            iconFamily='Ionicons'
-            size={16}
-          />
-        </Pressable>
+        <View style={styles.flexRowGap}>
+          <Pressable onPress={() => goBack()}>
+            <Icon
+              name='chevron-back'
+              iconFamily='Ionicons'
+              size={16}
+            />
+          </Pressable>
 
-        <View>
-          <CustomText
-            fontFamily='Okra-Bold'
-            fontSize={11}
-            style={styles.text}
-          >
-            {title}
-          </CustomText>
-          <CustomText
-            fontFamily='Okra-Medium'
-            fontSize={10}
-            style={styles.text2}
-          >
-            Delivering to Pochinki, Erangel
-          </CustomText>
+          <View>
+            <CustomText
+              fontFamily='Okra-Bold'
+              fontSize={11}
+              style={styles.text}
+            >
+              {title}
+            </CustomText>
+            <CustomText
+              fontFamily='Okra-Medium'
+              fontSize={10}
+              style={styles.text2}
+            >
+              Delivering to Pochinki, Erangel
+            </CustomText>
+          </View>
+        </View>
+        <View style={{ width: 20 }}>
+          <Icon
+            name='share-outline'
+            iconFamily='Ionicons'
+            color={Colors.primary}
+            size={RFValue(16)}
+          />
         </View>
       </View>
 
-      <View style={{ width: 20 }}>
-        <Icon
-          name='share-outline'
-          iconFamily='Ionicons'
-          color={Colors.primary}
-          size={RFValue(16)}
-        />
-      </View>
     </SafeAreaView>
   )
 }
