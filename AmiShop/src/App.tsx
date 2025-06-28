@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '@navigation/Navigation';
 import {Provider} from 'react-redux';
-import { appStore } from './redux/store';
 import { persistor, store } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 

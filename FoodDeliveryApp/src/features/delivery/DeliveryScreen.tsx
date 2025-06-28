@@ -1,9 +1,8 @@
-import { View, Text, StatusBar, Platform } from 'react-native';
-import React, { FC } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useStyles } from 'react-native-unistyles';
-import { homeStyles } from '@unistyles/homeStyles';
-import { useSharedState } from '@features/tabs/SharedContext';
+import {View} from 'react-native';
+import React, {FC} from 'react';
+import {useStyles} from 'react-native-unistyles';
+import {homeStyles} from '@unistyles/homeStyles';
+import {useSharedState} from '@features/tabs/SharedContext';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -14,9 +13,8 @@ import HeaderSection from '@components/home/HeaderSection';
 import MainList from '@components/list/MainList';
 
 const DeliveryScreen: FC = () => {
-  const insets = useSafeAreaInsets();
-  const { styles } = useStyles(homeStyles);
-  const { scrollYGlobal } = useSharedState();
+  const {styles} = useStyles(homeStyles);
+  const {scrollYGlobal} = useSharedState();
 
   const backgroundColorChanges = useAnimatedStyle(() => {
     const opacity = interpolate(scrollYGlobal.value, [1, 50], [0, 1]);
@@ -33,7 +31,7 @@ const DeliveryScreen: FC = () => {
       Extrapolate.CLAMP,
     );
     return {
-      transform: [{ translateY: translateY }],
+      transform: [{translateY: translateY}],
     };
   });
 
@@ -41,14 +39,12 @@ const DeliveryScreen: FC = () => {
     const translateY = interpolate(scrollYGlobal.value, [0, 50], [0, -50]);
 
     return {
-      transform: [{ translateY: translateY }],
+      transform: [{translateY: translateY}],
     };
   });
 
   return (
     <View style={styles.container}>
-      {/* <View style={{height: Platform.OS === 'android' ? insets.top : 0}} /> */}
-
       <Animated.View style={moveUpStyle}>
         <Animated.View style={moveUpStyleNoExtrapolate}>
           <Graphics />
